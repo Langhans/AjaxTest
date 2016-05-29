@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color: BLACK;
+	
+}
+
+#query{
+	background-color: gray;
+	color:white;
+	font-size:xx-large;
+	margin: auto;
+    width: 100%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+#list{
+	color:white;
+	font-size:x-large;
+	margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+    padding-top:auto;
+    padding-left: auto;
+    padding-right: auto;
+    padding-bottom: auto;
+}

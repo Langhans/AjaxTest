@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+
+
+<div>
+<input type="text" id="query" onkeyup="ajaxFunction(this.value)"></input>
+</div>
+
+<p id="list">
+  Hints here...
+</p>
+
+
+
+<script>
+
+function ajaxFunction(text){
+	
+	var query = text;
+	var xmlhttp = new XMLHttpRequest();
+	 xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("list").innerHTML = xmlhttp.responseText;
+        }
+    };
+    xmlhttp.open("GET", "/AjaxTest/AjaxServlet?q=" + query, true);
+    xmlhttp.send();
+}
+</script>
+
+</body>
+</html>
