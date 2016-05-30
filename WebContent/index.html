@@ -14,6 +14,8 @@
 <input type="text" id="query" onkeyup="ajaxFunction(this.value)"></input>
 </div>
 
+
+
 <p id="list">
   Hints here...
 </p>
@@ -29,6 +31,7 @@ function ajaxFunction(text){
 	 xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             document.getElementById("list").innerHTML = xmlhttp.responseText;
+            
         }
     };
     xmlhttp.open("GET", "/AjaxTest/AjaxServlet?q=" + query, true);

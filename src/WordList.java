@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -10,12 +10,15 @@ public class WordList {
 
   private static TreeMap<String, Integer> words;
 
-  static {
+  public WordList( InputStream wordlist) {
+    readInList(wordlist);
+  }
+
+  private static void readInList( InputStream inStream) {
     try {
       words = new TreeMap<>();
-      Path file = Paths.get("WebContent/orden.txt");
-      BufferedReader reader = Files.newBufferedReader(file,
-          java.nio.charset.StandardCharsets.ISO_8859_1);
+      BufferedReader reader = new BufferedReader(new InputStreamReader(inStream ,
+          StandardCharsets.ISO_8859_1));
       String word;
 
       while ((word = reader.readLine()) != null) {
@@ -23,12 +26,10 @@ public class WordList {
         words.put(wordSplit[0].trim(), 100);
       }
     } catch (Exception e) {
-      throw new RuntimeException("Cannot read in list!");
+      throw new RuntimeException("Cannot read in list!", e);
     }
   }
 
-  public WordList() {
-  }
 
   public TreeMap<String, Integer> getWords() {
     return words;
